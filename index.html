@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carousel</title>
     <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <section aria-label="carousel">
+      <div class="carousel">
+        <button class="carousel-button" data-carousel-btn="prev">
+          &#10094;
+        </button>
+        <button class="carousel-button" data-carousel-btn="next">
+          &#10095;
+        </button>
+        <ul data-carousel>
+          <li class="slide" data-carousel-slide data-active>
+            <img
+              src="https://images.pexels.com/photos/210205/pexels-photo-210205.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt="image-1"
+            />
+          </li>
+          <li class="slide" data-carousel-slide>
+            <img
+              src="https://images.pexels.com/photos/460621/pexels-photo-460621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt="image-2"
+            />
+          </li>
+          <li class="slide" data-carousel-slide>
+            <img
+              src="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt="image-3"
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
 </html>
