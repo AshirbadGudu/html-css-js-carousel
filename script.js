@@ -3,8 +3,12 @@ const buttons = document.querySelectorAll("[data-carousel-btn]");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
-    const slides = document.querySelectorAll("[data-carousel-slide]");
-    const activeSlide = document.querySelector("[data-active]");
+    const slidesContainer = button
+      .closest("[data-carousel]")
+      .querySelector("[data-carousel-slides");
+    const slides = slidesContainer.querySelectorAll("[data-carousel-slide]");
+    const activeSlide = slidesContainer.querySelector("[data-active]");
+    console.log(activeSlide);
     const activeSlideIndex = [...slides].indexOf(activeSlide);
     const nextSlideIndex = activeSlideIndex + offset;
     if (nextSlideIndex < 0) {
