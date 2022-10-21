@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("[data-carousel-btn]");
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
+function slide(button) {
+  return () => {
     const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
     const slidesContainer = button
       .closest("[data-carousel]")
@@ -20,5 +20,13 @@ buttons.forEach((button) => {
     }
     slides[nextSlideIndex].dataset.active = true;
     return delete activeSlide.dataset.active;
-  });
+  };
+}
+
+buttons.forEach((button) => button.addEventListener("click", slide(button)));
+
+window.addEventListener("DOMContentLoaded", () => {
+  setInterval(() => {
+    slide(buttons[0])();
+  }, 3500);
 });
