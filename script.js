@@ -1,4 +1,5 @@
 const buttons = document.querySelectorAll("[data-carousel-btn]");
+const dots = document.querySelectorAll("[data-carousel-dot]");
 
 function slide(button) {
   return () => {
@@ -10,6 +11,20 @@ function slide(button) {
     const activeSlide = slidesContainer.querySelector("[data-active]");
     const activeSlideIndex = [...slides].indexOf(activeSlide);
     const nextSlideIndex = activeSlideIndex + offset;
+    switch (nextSlideIndex) {
+      case -1:
+        moveDot(2)();
+        break;
+      case 1:
+        moveDot(1)();
+        break;
+      case 2:
+        moveDot(2)();
+        break;
+      default:
+        moveDot(0)();
+        break;
+    }
     if (nextSlideIndex < 0) {
       slides[slides.length + nextSlideIndex].dataset.active = true;
       return delete activeSlide.dataset.active;
@@ -23,10 +38,17 @@ function slide(button) {
   };
 }
 
-buttons.forEach((button) => button.addEventListener("click", slide(button)));
+function moveDot(i) {
+  return () => {
+    const dot = dots[i];
+    dots.forEach((d) => "active" in d.dataset && delete d.dataset.active);
+    dot.dataset.active = true;
+  };
+}
 
 window.addEventListener("DOMContentLoaded", () => {
+  buttons.forEach((button) => button.addEventListener("click", slide(button)));
   setInterval(() => {
-    slide(buttons[0])();
+    slide(buttons[1])();
   }, 3500);
 });

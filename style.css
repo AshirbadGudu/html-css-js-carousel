@@ -22,10 +22,34 @@ body {
   height: 100vh;
   position: relative;
 }
-.carousel > ul {
+.carousel [data-carousel-slides] {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+.carousel [data-carousel-dots] {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  bottom: 2vh;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+.carousel [data-carousel-dots] [data-carousel-dot] {
+  background-color: rgba(255, 255, 255, 1);
+  height: 0.78rem;
+  width: 0.78rem;
+  border-radius: 0.78rem;
+  cursor: pointer;
+  transition: 0.5s;
+  opacity: 0.5;
+}
+.carousel [data-carousel-dots] [data-active] {
+  opacity: 1;
 }
 .slide {
   position: absolute;
